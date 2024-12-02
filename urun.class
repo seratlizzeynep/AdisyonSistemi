@@ -1,0 +1,12 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+class Urun {
+    String isim;
+    double fiyat;
+
+    public Urun(String isim, double fiyat) {
+        this.isim = isim;
+        this.fiyat = fiyat;
+    }
+}
