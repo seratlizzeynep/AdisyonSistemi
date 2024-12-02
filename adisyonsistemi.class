@@ -1,0 +1,48 @@
+public class AdisyonSistemi {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<Urun> menu = new ArrayList<>();
+        ArrayList<Urun> siparisListesi = new ArrayList<>();
+        double toplamTutar = 0.0;
+
+      
+        menu.add(new Urun("Çay", 5.0));
+        menu.add(new Urun("Kahve", 15.0));
+        menu.add(new Urun("Kola", 10.0));
+        menu.add(new Urun("Hamburger", 50.0));
+        menu.add(new Urun("Pizza", 70.0));
+
+        System.out.println("Adisyon Sistemi :");
+        boolean devam = true;
+
+        while (devam) {
+            System.out.println("\nMenü:");
+            for (int i = 0; i < menu.size(); i++) {
+                System.out.println((i + 1) + ". " + menu.get(i).isim + " - " + menu.get(i).fiyat + " TL");
+            }
+            System.out.println("0. Siparişi Tamamla");
+
+            System.out.print("Seçiminizi yapın (0-" + menu.size() + "): ");
+            int secim = scanner.nextInt();
+
+            if (secim == 0) {
+                devam = false;
+                break;
+            } else if (secim > 0 && secim <= menu.size()) {
+                Urun secilenUrun = menu.get(secim - 1);
+                siparisListesi.add(secilenUrun);
+                toplamTutar += secilenUrun.fiyat;
+                System.out.println(secilenUrun.isim + " eklendi. Mevcut toplam: " + toplamTutar + " TL");
+            } else {
+                System.out.println("Geçersiz seçim. Tekrar deneyin.");
+            }
+        }
+
+        System.out.println("Sipariş Özeti :");
+        for (Urun urun : siparisListesi) {
+            System.out.println("- " + urun.isim + ": " + urun.fiyat + " TL");
+        }
+        System.out.println("Toplam Tutar: " + toplamTutar + " TL");
+        System.out.println("Teşekkür ederiz!");
+    }
+}
